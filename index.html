@@ -58,7 +58,7 @@
       <div class="strip__bar">
         <a class="brand" href="#top" aria-label="Zahnarztpraxis Dr. Schülein – zur Startseite">
           <svg class="brand__sig" aria-hidden="true"><use href="#sig"/></svg>
-          <span class="brand__word"><span>Zahnarztpraxis</span><span>Neubrandenburg</span></span>
+          <span class="brand__word"><span>Praxis für</span><span>Zahnheilkunde</span></span>
         </a>
         <button class="strip__toggle" type="button" aria-expanded="false" aria-controls="strip-menu">
           <span></span><span></span>
@@ -90,7 +90,6 @@
       <div class="container hero__container">
         <div class="hero__grid">
           <div class="hero__content">
-            <div class="eyebrow"><p>Zahnarztpraxis · Neubrandenburg Innenstadt</p></div>
             <div class="display"><h1>Ein Zahnarzt, der Zahn&shy;ersatz selbst gebaut hat.</h1></div>
             <div class="lead"><p>Dr. Heinrich Schülein war Zahntechnikermeister, bevor er Zahnarzt wurde. In seiner Praxis in der Pfaffenstraße verbindet er beides: gründliche Diagnostik und ein geschultes Auge für Passform, Farbe und Funktion.</p></div>
             <div class="hero__actions">
@@ -114,7 +113,7 @@
               <div data-day="1"><dt>Mo</dt><dd>8–13 · 14:30–19 Uhr</dd></div>
               <div data-day="2"><dt>Di</dt><dd>8–12 Uhr</dd></div>
               <div data-day="3"><dt>Mi</dt><dd>8–12 · 13–16 Uhr</dd></div>
-              <div data-day="4"><dt>Do</dt><dd>8–12 · 14:30–19 Uhr</dd></div>
+              <div data-day="4"><dt>Do</dt><dd>8–13 · 14:30–19 Uhr</dd></div>
               <div data-day="5"><dt>Fr</dt><dd>8–12 Uhr</dd></div>
             </dl>
             <p class="plate__addr">Pfaffenstraße 27 · 17033 Neubrandenburg</p>
@@ -133,8 +132,16 @@
     <section class="section section--sand" id="praxis">
       <div class="container">
         <div class="story">
-          <div class="eyebrow reveal"><p>Die Praxis</p></div>
-          <p class="story__statement reveal">Die meisten Zahnärzte schicken den Abdruck ins Labor und sehen die Arbeit erst bei der Eingliederung. <em>Dr. Schülein hat jahrelang an der anderen Seite der Werkbank gestanden.</em> Das merkt man bei jeder Krone, jeder Brücke und jeder Prothese.</p>
+          <div class="story__top">
+            <figure class="portrait reveal">
+              <img src="assets/img/dr-schuelein.jpg" alt="Porträt von Dr. Heinrich Schülein" width="900" height="1320" loading="lazy" decoding="async">
+              <figcaption><span>Dr. Heinrich Schülein</span><span>Zahnarzt · Zahntechnikermeister</span></figcaption>
+            </figure>
+            <div class="story__lead reveal">
+              <div class="eyebrow"><p>Die Praxis</p></div>
+              <p class="story__statement">Die meisten Zahnärzte schicken den Abdruck ins Labor und sehen die Arbeit erst bei der Eingliederung. <em>Dr. Schülein hat jahrelang an der anderen Seite der Werkbank gestanden.</em> Das merkt man bei jeder Krone, jeder Brücke und jeder Prothese.</p>
+            </div>
+          </div>
 
           <ol class="path reveal" aria-label="Werdegang">
             <li><span class="path__k">Handwerk</span><span class="path__v">Zahntechnikermeister</span></li>
@@ -298,6 +305,31 @@
       </div>
     </section>
 
+    <!-- Räume: photos from the practice's Google profile -->
+    <section class="section section--sand" id="raeume">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><p>Die Räume</p></div>
+          <div class="heading"><h2>Warme Farben statt Klinik&shy;atmosphäre.</h2></div>
+          <div class="lead"><p>Orange Decken, tiefblaue Wände und geschwungenes Holz: In der Pfaffenstraße erwartet Sie keine kühle Klinik, sondern eine Praxis, in der man gern kurz wartet.</p></div>
+        </div>
+        <div class="rooms reveal" tabindex="0" aria-label="Fotos der Praxisräume">
+          <figure class="room room--wide">
+            <img src="assets/img/empfang.jpg" alt="Der Empfang mit geschwungenem Tresen unter der orangefarbenen Decke" width="1550" height="1070" loading="lazy" decoding="async">
+            <figcaption>Empfang</figcaption>
+          </figure>
+          <figure class="room">
+            <img src="assets/img/wartebereich.jpg" alt="Wartebereich mit orangefarbenen Stühlen am Holztresen" width="1350" height="940" loading="lazy" decoding="async">
+            <figcaption>Wartebereich</figcaption>
+          </figure>
+          <figure class="room">
+            <img src="assets/img/flur.jpg" alt="Flur zu den Behandlungsräumen" width="1350" height="940" loading="lazy" decoding="async">
+            <figcaption>Zu den Behandlungsräumen</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
     <!-- Schlafmedizin: the night, from falling asleep to the morning check -->
     <section class="section section--night" id="schlaf">
       <div class="container">
@@ -433,7 +465,7 @@
         <div class="section-head reveal">
           <div class="eyebrow"><p>Sprechzeiten</p></div>
           <div class="heading"><h2>Früh ab acht, zweimal die Woche bis sieben.</h2></div>
-          <div class="lead"><p>Montags und donnerstags behandeln wir bis 19 Uhr, für alle, die tagsüber arbeiten. Termine bitte nach telefonischer Vereinbarung.</p></div>
+          <div class="lead"><p>Montags und donnerstags behandeln wir bis 19 Uhr, für alle, die tagsüber arbeiten. Weitere Termine nach Vereinbarung.</p></div>
         </div>
 
         <div class="week reveal" data-week>
@@ -457,8 +489,8 @@
           </div>
           <div class="week__row" data-day="4">
             <div class="week__day"><span>Donnerstag</span></div>
-            <div class="week__track"><span class="week__bar" style="--a:8;--b:12"></span><span class="week__bar" style="--a:14.5;--b:19"></span></div>
-            <div class="week__txt"><span>8:00–12:00 · 14:30–19:00</span></div>
+            <div class="week__track"><span class="week__bar" style="--a:8;--b:13"></span><span class="week__bar" style="--a:14.5;--b:19"></span></div>
+            <div class="week__txt"><span>8:00–13:00 · 14:30–19:00</span></div>
           </div>
           <div class="week__row" data-day="5">
             <div class="week__day"><span>Freitag</span></div>
@@ -471,45 +503,6 @@
         <div class="emergency reveal">
           <div class="emergency__text"><p><strong>Zahnschmerzen außerhalb der Sprechzeiten?</strong> Der zahnärztliche Notdienst in Mecklenburg-Vorpommern ist nachts, am Wochenende und an Feiertagen für Sie da.</p></div>
           <a class="btn btn--line" href="https://zaekmv.de/notfalldienstsuche" target="_blank" rel="noopener">Notdienst finden</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Anfahrt: the practice inside the medieval wall ring (OSM data, baked) -->
-    <section class="section section--sand" id="anfahrt">
-      <div class="container">
-        <div class="ring">
-          <div class="ring__text reveal">
-            <div class="section-head">
-              <div class="eyebrow"><p>Anfahrt</p></div>
-              <div class="heading"><h2>Mitten im Ring.</h2></div>
-              <div class="lead"><p>Die Praxis liegt in der Pfaffenstraße, innerhalb der mittelalterlichen Stadtmauer und nur ein paar Schritte vom Neuen Tor entfernt.</p></div>
-            </div>
-            <ul class="ring__ways">
-              <li><span class="ring__k">Vom Neuen Tor</span><span class="ring__v">ca. 2 Min. zu Fuß</span></li>
-              <li><span class="ring__k">Vom Stargarder Tor</span><span class="ring__v">ca. 5 Min. zu Fuß</span></li>
-              <li><span class="ring__k">Vom Friedländer Tor</span><span class="ring__v">ca. 7 Min. zu Fuß</span></li>
-              <li><span class="ring__k">Vom Treptower Tor</span><span class="ring__v">ca. 12 Min. zu Fuß</span></li>
-            </ul>
-            <a class="btn btn--petrol" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pfaffenstra%C3%9Fe+27+17033+Neubrandenburg" target="_blank" rel="noopener">Route planen</a>
-          </div>
-          <figure class="map reveal">
-            <svg class="map__svg" viewBox="0 0 1240 900" role="img" aria-label="Lageplan: die Praxis in der Pfaffenstraße liegt innerhalb der Neubrandenburger Stadtmauer, nahe dem Neuen Tor">
-            <path class="map__park" d="M309.3 408.9 L318.0 385.0 L323.7 356.8 L333.9 333.1 L346.8 313.4 L362.0 293.1 L381.4 272.2 L404.4 251.4 L427.8 233.1 L451.4 216.1 L475.5 199.7 L495.5 187.2 L515.9 174.9 L535.8 163.5 L554.2 153.6 L573.8 143.9 L591.5 135.8 L610.2 129.2 L644.9 125.9 L679.5 124.2 L713.8 124.9 L748.9 128.2 L774.9 132.7 L791.8 138.5 L814.2 149.0 L832.2 159.6 L847.6 170.4 L867.3 190.6 L885.6 210.2 L900.3 226.1 L913.4 242.2 L923.4 251.6 L924.2 254.5 L924.4 256.3 L923.0 263.2 L925.6 270.7 L928.2 284.1 L934.2 297.7 L938.7 315.3 L944.8 330.4 L950.0 345.7 L954.6 362.4 L957.8 379.2 L960.3 394.3 L962.6 416.9 L964.4 436.7 L965.2 452.6 L965.9 472.1 L965.9 491.3 L965.1 506.6 L964.6 523.6 L964.2 537.5 L962.9 549.4 L961.0 563.8 L958.1 581.1 L953.7 599.9 L948.1 621.8 L941.4 642.5 L931.8 662.9 L919.0 681.5 L900.9 699.9 L879.8 715.9 L856.7 725.9 L833.6 733.2 L811.6 737.4 L784.6 738.9 L755.5 739.1 L732.9 743.2 L711.3 746.2 L700.3 748.0 L694.1 755.6 L691.0 760.0 L688.2 756.8 L685.2 751.9 L680.2 746.1 L671.7 740.7 L662.0 736.8 L639.7 734.9 L583.6 725.6 L512.5 709.3 L439.9 688.1 L371.9 661.5 L321.5 629.7 L311.2 601.1 L308.0 571.5 L306.8 540.9 L307.8 514.2 L309.1 491.6 L309.5 474.9 L306.1 462.9 L305.7 456.2 L305.5 449.8 L307.2 431.4Z"/>
-            <path class="map__wall" d="M319.5 651.6 L322.8 656.2 L340.1 669.9 L364.3 678.7 L489.8 709.6 L576.3 730.1 L591.7 731.9 L640.5 734.6 L640.4 737.4 L646.0 737.7 L646.2 734.9 L657.0 735.8 L678.4 736.0 L680.8 736.0 L684.5 736.1M727.0 125.7 L746.8 128.1 L747.2 124.9 L753.2 125.6 L752.8 128.8 L778.4 131.3M915.5 261.7 L916.1 263.3 L916.4 264.0 L916.7 264.6 L921.6 275.5 L925.0 284.3M653.9 118.7 L637.9 119.2 L626.7 121.8 L612.8 126.3 L609.6 127.8M311.8 457.4 L311.9 458.7 L311.9 459.9 L312.0 461.2 L309.9 476.5M578.3 140.7 L566.8 145.9 L556.5 151.5M946.3 631.6 L946.5 630.7 L952.7 610.7M954.0 604.3 L956.1 586.3M963.7 530.7 L963.7 529.7 L963.8 526.3 L965.4 504.7M952.2 350.4 L955.1 359.3 L957.6 370.5M939.8 317.3 L941.1 320.2 L946.0 331.3 L949.4 341.2 L950.4 344.4M927.2 289.7 L931.6 297.9 L937.6 311.8M958.8 377.1 L960.0 383.7 L961.7 403.9M697.0 780.3 L696.2 770.4M684.2 742.5 L684.2 752.4M524.1 169.5 L513.3 175.7 L504.6 181.4M529.8 166.2 L550.0 155.0M306.4 579.5 L306.8 598.8 L313.3 628.3 L313.7 629.9M933.7 666.0 L919.3 689.0 L913.6 696.1 L906.7 702.6 L893.3 711.9 L883.8 717.5 L868.0 725.2 L853.7 731.1 L844.2 734.1 L835.4 735.7 L825.9 736.5 L798.9 738.8 L798.9 741.0 L793.9 741.1 L793.8 738.9 L759.2 739.8 L731.2 739.2M965.8 498.0 L965.9 484.6 L965.6 472.6 L968.8 472.5 L968.6 466.7 L965.4 466.8 L965.4 465.7M936.3 659.9 L940.5 650.3 L943.7 640.2M306.5 525.7 L305.9 543.2M309.3 482.2 L307.4 500.0 L306.9 516.0M816.1 147.8 L829.8 156.8 L848.4 170.1 L859.2 179.5 L862.0 176.6 L866.2 180.7 L863.4 183.5 L873.1 194.1 L895.6 226.1 L907.8 248.1M305.8 548.1 L306.4 574.5M388.6 263.7 L385.5 266.8 L371.0 280.7 L367.9 283.9 L348.1 305.3 L340.3 316.1 L333.5 327.2M329.0 335.1 L324.5 349.0M321.7 356.5 L321.4 357.4 L318.1 367.2 L313.3 387.3 L311.2 415.7 L311.5 447.7 L311.5 448.8M785.1 133.4 L795.4 137.0 L805.4 141.2 L810.4 144.1M962.1 409.8 L962.3 413.5 L962.4 414.5 L962.5 416.8M956.7 582.0 L960.8 556.1 L966.7 557.1 L967.5 551.8 L961.6 550.9 L962.4 545.6 L962.8 540.4M724.6 739.0 L700.2 736.9 L698.9 736.8 L697.7 736.7 L696.3 736.6M696.1 752.2 L696.0 743.1M684.2 755.0 L684.2 758.4 L684.2 762.7 L684.3 781.3M444.5 219.1 L429.3 229.0 L407.8 245.8 L393.7 259.0M471.8 202.0 L451.5 214.7M498.5 185.2 L487.9 191.8 L478.0 198.1M938.4 245.3 L932.6 247.5 L926.7 249.7 L926.2 249.9 L925.7 250.1 L917.7 253.0M937.6 251.7 L919.9 258.7M304.3 449.1 L271.2 450.3M304.7 460.1 L311.9 459.9M603.6 130.4 L585.7 138.3 L583.8 139.4"/>
-            <g class="map__place"><rect x="628.5" y="558.7" width="18" height="32" rx="3"/><text x="637.5" y="542.7" text-anchor="middle">Konzertkirche</text></g>
-            <path class="map__walk" d="M938.1 248.5 L924.8 626.5"/>
-            <g class="map__gate"><circle cx="938.1" cy="248.5" r="10"/><text x="1234.0" y="208.5" text-anchor="end">Friedländer Tor<tspan x="1234.0" dy="1.25em">ca. 7 Min. zu Fuß</tspan></text></g>
-            <path class="map__walk" d="M964.5 535.1 L924.8 626.5"/>
-            <g class="map__gate"><circle cx="964.5" cy="535.1" r="10"/><text x="1234.0" y="499.1" text-anchor="end">Neues Tor<tspan x="1234.0" dy="1.25em">ca. 2 Min. zu Fuß</tspan></text></g>
-            <path class="map__walk" d="M690.4 761.3 L924.8 626.5"/>
-            <g class="map__gate"><circle cx="690.4" cy="761.3" r="10"/><text x="690.4" y="811.3" text-anchor="middle">Stargarder Tor<tspan x="690.4" dy="1.25em">ca. 5 Min. zu Fuß</tspan></text></g>
-            <path class="map__walk" d="M288.6 454.1 L924.8 626.5"/>
-            <g class="map__gate"><circle cx="288.6" cy="454.1" r="10"/><text x="262.6" y="456.1" text-anchor="end">Treptower Tor<tspan x="262.6" dy="1.25em">ca. 12 Min. zu Fuß</tspan></text></g>
-            <g class="map__pin" transform="translate(924.8 626.5)"><circle r="34" class="map__pulse"/><circle r="15"/></g>
-            </svg>
-            <figcaption>Pfaffenstraße 27 · Kartendaten © OpenStreetMap-Mitwirkende</figcaption>
-          </figure>
         </div>
       </div>
     </section>
@@ -584,6 +577,9 @@
 
         <div class="contact reveal">
           <div class="contact__info">
+            <figure class="contact__photo">
+              <img src="assets/img/haus.jpg" alt="Die Pfaffenstraße in der Neubrandenburger Innenstadt" width="1200" height="719" loading="lazy" decoding="async">
+            </figure>
             <dl class="contact__details">
               <div>
                 <dt>Anschrift</dt>
@@ -603,7 +599,7 @@
               </div>
               <div>
                 <dt>Sprechzeiten</dt>
-                <dd class="hours"><span>Mo</span><span>8–13 · 14:30–19 Uhr</span><span>Di</span><span>8–12 Uhr</span><span>Mi</span><span>8–12 · 13–16 Uhr</span><span>Do</span><span>8–12 · 14:30–19 Uhr</span><span>Fr</span><span>8–12 Uhr</span></dd>
+                <dd class="hours"><span>Mo</span><span>8–13 · 14:30–19 Uhr</span><span>Di</span><span>8–12 Uhr</span><span>Mi</span><span>8–12 · 13–16 Uhr</span><span>Do</span><span>8–13 · 14:30–19 Uhr</span><span>Fr</span><span>8–12 Uhr</span></dd>
               </div>
             </dl>
             <a class="btn btn--cream" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pfaffenstra%C3%9Fe+27+17033+Neubrandenburg" target="_blank" rel="noopener">Route planen</a>
@@ -681,7 +677,7 @@
         </div>
         <div>
           <h2>Sprechzeiten</h2>
-          <p>Mo 8–13 · 14:30–19 Uhr<br>Di 8–12 Uhr<br>Mi 8–12 · 13–16 Uhr<br>Do 8–12 · 14:30–19 Uhr<br>Fr 8–12 Uhr</p>
+          <p>Mo 8–13 · 14:30–19 Uhr<br>Di 8–12 Uhr<br>Mi 8–12 · 13–16 Uhr<br>Do 8–13 · 14:30–19 Uhr<br>Fr 8–12 Uhr</p>
         </div>
         <div>
           <h2>Kontakt</h2>

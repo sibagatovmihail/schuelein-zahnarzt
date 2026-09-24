@@ -66,7 +66,7 @@
   /* space */
   --gutter:      1.5rem;
   --section-pad: 14rem;
-  --header-h:    6.5rem;
+  --header-h:    8.5rem;           /* nav 3rem + 2 × (inset + 2.5rem) */
 
   /* nav — one height for every control; the logo tile sets the radius family */
   --nav-h:   3rem;
@@ -74,7 +74,8 @@
   --mark:    var(--nav-h);
   --mark-r:  calc(var(--mark) * .22);                 /* the tile's own rx 22/100 */
   --ctl-r:   var(--mark-r);                           /* every control, site-wide */
-  --strip-r: calc(var(--mark-r) + var(--nav-pad));    /* the strip that holds them */
+  --hdr-extra:   2.5rem;          /* header breathing room at the top of the page (+40px) */
+  --hdr-extra-s: .625rem;         /* … collapsed once the page scrolls (+10px) */
   --card-r:  1.25rem;
 
   /* motion */
@@ -93,7 +94,8 @@
 /* ---------- base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 6rem; }
-html.nav-open { overflow: hidden; }
+html.nav-open { overflow: hidden; }           /* plus the body pin in JS, for iOS Safari */
+html.nav-open .strip { overscroll-behavior: contain; touch-action: none; }
 body {
   margin: 0;
   background: var(--ground);
@@ -178,20 +180,23 @@ button, input, select, textarea { font: inherit; color: inherit; }
 /* ==========================================================================
    Navigation strip
    ========================================================================== */
-.site-header {
-  position: fixed; inset: 0 0 auto; z-index: 100;
-  padding: calc(1.25rem + env(safe-area-inset-top, 0px)) var(--gutter) 0;
-  pointer-events: none;
-}
+/* Full-bleed bar, edge to edge; its content lines up with the page container.
+   Tall at the top of the page, collapses once the page scrolls (JS sets .is-scrolled). */
+.site-header { position: fixed; inset: 0 0 auto; z-index: 100; }
 .strip {
-  pointer-events: auto;
-  max-width: calc(72.5rem - 2 * var(--gutter)); margin-inline: auto;
+  --pad-y: calc(var(--nav-pad) + var(--hdr-extra));
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-  padding: var(--nav-pad);
+  padding: calc(var(--pad-y) + env(safe-area-inset-top, 0px))
+           max(var(--gutter), calc((100% - 72.5rem) / 2 + var(--gutter)))
+           var(--pad-y);
   background: rgba(251, 249, 245, .92);
   -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px);
-  border-radius: var(--strip-r);
-  box-shadow: 0 0 0 1px var(--line), 0 10px 30px -18px rgba(23, 33, 31, .35);
+  box-shadow: 0 1px 0 var(--line);
+  transition: padding .4s cubic-bezier(.4, 0, .2, 1), box-shadow .4s ease;
+}
+.site-header.is-scrolled .strip {
+  --pad-y: calc(var(--nav-pad) + var(--hdr-extra-s));
+  box-shadow: 0 1px 0 var(--line), 0 12px 30px -22px rgba(23, 33, 31, .4);
 }
 .strip__bar { display: flex; align-items: center; }
 .strip__toggle { display: none; }
@@ -202,7 +207,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 .brand {
   display: flex; align-items: center; gap: .875rem;
-  height: var(--nav-h); padding: 0 .75rem 0 .625rem; text-decoration: none;
+  height: var(--nav-h); padding: 0 .75rem 0 0; text-decoration: none;
 }
 .brand__sig { height: calc(var(--nav-h) - .25rem); width: auto; aspect-ratio: 342 / 118; flex: none; overflow: visible; }
 .sig__name { fill: currentColor; stroke: currentColor; stroke-width: 1.9; stroke-linejoin: round; }
@@ -233,7 +238,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero { min-height: calc(var(--vh, 1vh) * 100); display: flex; }
 .hero__container {
   width: 100%; display: flex; flex-direction: column; gap: 2.5rem;
-  padding-top: calc(var(--header-h) + 3rem + env(safe-area-inset-top, 0px));
+  padding-top: calc(var(--header-h) + 1.5rem + env(safe-area-inset-top, 0px));
   padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
 }
 .hero__grid {
@@ -302,6 +307,27 @@ button, input, select, textarea { font: inherit; color: inherit; }
    Praxis — statement, path, three gains
    ========================================================================== */
 .story { display: grid; grid-template-columns: minmax(0, 1fr); gap: 3rem; }
+.story__top {
+  display: grid; grid-template-columns: minmax(0, .62fr) minmax(0, 1fr);
+  gap: 4.5rem; align-items: center;
+}
+.story__lead { display: grid; gap: 1.75rem; }
+.portrait {
+  --cap-gap: .75rem;
+  position: relative; margin: 0;
+  aspect-ratio: 4 / 5; overflow: hidden;
+  border-radius: var(--card-r); background: #fff;
+}
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.portrait figcaption {
+  position: absolute; left: var(--cap-gap); right: var(--cap-gap); bottom: var(--cap-gap);
+  display: grid; gap: .125rem; padding: .75rem 1rem;
+  border-radius: calc(var(--card-r) - var(--cap-gap));      /* nested: outer − gap */
+  background: rgba(251, 249, 245, .9);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+.portrait figcaption span:first-child { font-family: var(--serif); font-size: 1.125rem; font-weight: 600; }
+.portrait figcaption span:last-child { font-size: var(--fs-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .story__statement {
   font-family: var(--serif); font-size: clamp(1.625rem, 1.15rem + 1.7vw, 2.625rem);
   font-weight: 400; line-height: 1.25; letter-spacing: -.015em;
@@ -542,8 +568,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
    ========================================================================== */
 .contact { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: .5rem; }
 .contact__info {
+  --ci-px: 2.5rem; --ci-py: 2.5rem;
   display: flex; flex-direction: column; align-items: flex-start; gap: 2.5rem;
-  padding: 2.5rem;
+  padding: var(--ci-py) var(--ci-px);
   background: var(--petrol); color: var(--on-dark);
   border-radius: var(--card-r);
 }
@@ -622,6 +649,34 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .footer__bottom p { font-size: var(--fs-ui); }
 .footer__legal { display: flex; gap: 1.5rem; font-size: var(--fs-ui); }
+
+/* ==========================================================================
+   Räume — photo mosaic
+   ========================================================================== */
+.rooms {
+  display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); grid-template-rows: 1fr 1fr;
+  gap: .5rem; height: clamp(26rem, 44vw, 38rem);
+}
+.room { position: relative; margin: 0; overflow: hidden; border-radius: var(--card-r); background: var(--night); }
+.room--wide { grid-row: 1 / span 2; }
+.room img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.16, 1, .3, 1); }
+.room:hover img { transform: scale(1.03); }
+.room figcaption {
+  position: absolute; left: .75rem; bottom: .75rem;
+  padding: .375rem .75rem; border-radius: calc(var(--card-r) - .75rem);
+  background: rgba(23, 33, 31, .74); color: var(--on-dark);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  font-size: var(--fs-ui); font-weight: 500;
+}
+
+/* contact card: street photo bleeds to the card's top edge */
+.contact__photo {
+  align-self: stretch;
+  margin: calc(-1 * var(--ci-py)) calc(-1 * var(--ci-px)) 0;
+  aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: var(--card-r) var(--card-r) 0 0;         /* shares the card's edge, same radius */
+}
+.contact__photo img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ==========================================================================
    Perspektivwechsel — the section flips: dark workbench ↔ bright surgery
@@ -724,34 +779,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .verdict--maybe { color: var(--brass); }
 
 /* ==========================================================================
-   Anfahrt — the wall ring, drawn from OpenStreetMap
-   ========================================================================== */
-.ring { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 4rem; align-items: center; }
-.ring__text { display: grid; gap: 2rem; justify-items: start; }
-.ring__text .section-head { margin-bottom: 0; }
-.ring__ways { width: 100%; border-top: 1px solid var(--line); }
-.ring__ways li {
-  display: flex; justify-content: space-between; gap: 1rem;
-  padding: .875rem 0; border-bottom: 1px solid var(--line);
-  font-size: var(--fs-small);
-}
-.ring__k { font-weight: 500; }
-.ring__v { color: var(--muted); font-variant-numeric: tabular-nums; }
-.map { display: grid; gap: .75rem; }
-.map__svg { width: 100%; height: auto; overflow: visible; }
-.map figcaption { font-size: var(--fs-ui); color: var(--muted); text-align: center; }
-.map__park { fill: none; stroke: #CBD3C1; stroke-width: 46; stroke-linejoin: round; }
-.map__wall { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
-.map__walk { fill: none; stroke: var(--petrol); stroke-width: 2.5; stroke-dasharray: 4 8; }
-.map__gate circle { fill: var(--ground); stroke: var(--ink); stroke-width: 3.5; }
-.map__gate text, .map__place text { font-family: var(--sans); font-size: 30px; font-weight: 500; fill: var(--ink); }
-.map__gate tspan { font-size: 24px; font-weight: 400; fill: var(--muted); }
-.map__place rect { fill: none; stroke: var(--muted); stroke-width: 2.5; }
-.map__pin circle { fill: var(--brass); }
-.map__pin .map__pulse { fill: rgba(184, 145, 63, .28); transform-box: fill-box; transform-origin: center; animation: pulse 2.4s ease-out infinite; }
-@keyframes pulse { 0% { transform: scale(.5); opacity: 1; } 100% { transform: scale(1.6); opacity: 0; } }
-
-/* ==========================================================================
    Draft notice + licence lock
    ========================================================================== */
 .draft-tag {
@@ -826,24 +853,22 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .gain { padding: 2rem 1.75rem; }
   .quotes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .myths { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .ring { gap: 3rem; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* the strip folds into a sheet */
 @media (max-width: 62rem) {
-  :root { --nav-pad: .5rem; --header-h: 5.5rem; }
-  .site-header { padding: calc(.75rem + env(safe-area-inset-top, 0px)) .75rem 0; }
+  :root { --nav-pad: .25rem; --hdr-extra: 1.25rem; --header-h: 6rem; }   /* phones: +20px at the top, +10px scrolled */
   .strip {
     flex-direction: column; align-items: stretch; gap: 0;
-    height: calc(var(--nav-h) + 2 * var(--nav-pad)); overflow: hidden;
-    padding: var(--nav-pad);
-    transition: height .4s cubic-bezier(.4, 0, .2, 1);
+    height: calc(var(--nav-h) + 2 * var(--pad-y) + env(safe-area-inset-top, 0px)); overflow: hidden;
+    padding-inline: var(--gutter);
+    transition: height .4s cubic-bezier(.4, 0, .2, 1), padding .4s cubic-bezier(.4, 0, .2, 1), box-shadow .4s ease;
   }
   .strip[data-open="true"] {
     background: var(--cell);
-    height: min(35rem, calc(var(--vh, 1vh) * 100 - 1.5rem - env(safe-area-inset-top, 0px)));
-    transition: height .46s var(--ease-jump);
+    height: min(38rem, calc(var(--vh, 1vh) * 100));
+    transition: height .46s var(--ease-jump), padding .4s ease;
   }
   .strip__bar { justify-content: space-between; flex: none; height: var(--nav-h); }
   .brand__word { display: grid; }
@@ -889,8 +914,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .voices, .faq { grid-template-columns: 1fr; gap: 3rem; }
   .flip__head { flex-direction: column; align-items: stretch; gap: 2.5rem; }
   .toggle { align-self: flex-start; }
-  .ring { grid-template-columns: 1fr; }
-  .map { max-width: 40rem; }
+
   .voices__head { grid-template-columns: auto 1fr 1fr; align-items: end; gap: 1.5rem 2rem; }
   .voices__head .eyebrow { grid-column: 1 / -1; }
   .night { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 4.5rem; }
@@ -941,6 +965,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .emergency { flex-direction: column; align-items: stretch; padding: 1.5rem; gap: 1.25rem; }
 
   .contact { grid-template-columns: 1fr; }
+  .story__top { grid-template-columns: 1fr; gap: 2.5rem; }
+  .portrait { aspect-ratio: 1 / 1; max-width: 26rem; }
+  .rooms { height: clamp(20rem, 60vw, 28rem); }
   .view { grid-template-columns: 1fr; gap: .75rem; padding: 1.5rem 0; }
   .view__text p { font-size: 1.1875rem; }
   .myths { grid-template-columns: 1fr; }
@@ -977,10 +1004,18 @@ button, input, select, textarea { font: inherit; color: inherit; }
   .week__row { padding-inline: .625rem; margin-inline: -.625rem; }
   .acc__btn { font-size: 1.1875rem; }
   .acc__inner p { padding-right: 0; }
-  .contact__info, .form-cell { padding: 1.75rem 1.25rem; }
+  .contact__info { --ci-px: 1.25rem; --ci-py: 1.75rem; }
+  .form-cell { padding: 1.75rem 1.25rem; }
   .form__row { flex-direction: column; }
   .footer__grid { grid-template-columns: 1fr; gap: 2rem; }
   .toggle { align-self: stretch; }
+  .rooms {
+    display: flex; height: auto; gap: .5rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter);
+    scroll-padding-inline: var(--gutter); scrollbar-width: none;
+  }
+  .rooms::-webkit-scrollbar { display: none; }
+  .room { flex: 0 0 85%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
   .myths {
     display: flex; gap: .5rem; overflow-x: auto; scroll-snap-type: x mandatory;
     margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter);
@@ -988,9 +1023,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
   }
   .myths::-webkit-scrollbar { display: none; }
   .myth { flex: 0 0 82%; min-height: 17.5rem; scroll-snap-align: start; }
-  .map__gate text, .map__place text { font-size: 44px; }
-  .map__gate tspan { display: none; }
-  .map__svg { overflow: hidden; }
   .toggle__btn { padding: 0 .5rem; font-size: .875rem; }
   .draft-tag { left: 50%; transform: translateX(-50%); white-space: nowrap; }
   .footer .container { padding-bottom: 4.5rem; }

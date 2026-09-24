@@ -45,14 +45,49 @@
     }
   });
 
+  /* ---------- header: tall at the top, collapses once the page moves ---------- */
+  var header = document.querySelector('.site-header');
+  if (header) {
+    var ticking = false;
+    var setScrolled = function () {
+      ticking = false;
+      if (root.classList.contains('nav-open')) return;        /* body is pinned; keep the state it had */
+      header.classList.toggle('is-scrolled', window.scrollY > 8);
+    };
+    setScrolled();
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(setScrolled); }
+    }, { passive: true });
+  }
+
   /* ---------- navigation strip (phone sheet) ---------- */
   var strip = document.querySelector('.strip');
   var toggle = document.querySelector('.strip__toggle');
+  /* Scroll lock while the sheet is open. overflow:hidden alone does not stop
+     iOS Safari, so the body is pinned at the current offset and the exact
+     position is restored on close (instantly — no smooth scroll back). */
+  var lockY = 0, locked = false;
+  function lockScroll(on) {
+    var b = document.body.style;
+    if (on && !locked) {
+      lockY = window.scrollY;
+      b.position = 'fixed'; b.top = -lockY + 'px'; b.left = '0'; b.right = '0'; b.width = '100%';
+      locked = true;
+    } else if (!on && locked) {
+      b.position = b.top = b.left = b.right = b.width = '';
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, lockY);
+      root.style.scrollBehavior = '';
+      locked = false;
+    }
+  }
   function setNav(open) {
     strip.setAttribute('data-open', open ? 'true' : 'false');
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.querySelector('.visually-hidden').textContent = open ? 'Menü schließen' : 'Menü öffnen';
+    if (open) lockScroll(true);
     root.classList.toggle('nav-open', open);
+    if (!open) lockScroll(false);
   }
   if (strip && toggle) {
     toggle.addEventListener('click', function () { setNav(strip.getAttribute('data-open') !== 'true'); });
@@ -148,7 +183,7 @@
   /* ---------- office hours: live status in Berlin time ----------
      Computed in the browser, no request. Public holidays are not known here,
      so the plate says "laut Sprechzeiten". */
-  var HOURS = { 1: [[8, 13], [14.5, 19]], 2: [[8, 12]], 3: [[8, 12], [13, 16]], 4: [[8, 12], [14.5, 19]], 5: [[8, 12]] };
+  var HOURS = { 1: [[8, 13], [14.5, 19]], 2: [[8, 12]], 3: [[8, 12], [13, 16]], 4: [[8, 13], [14.5, 19]], 5: [[8, 12]] };
   var DAYS = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
   var fmt = function (h) { var m = Math.round((h % 1) * 60); return Math.floor(h) + ':' + (m < 10 ? '0' : '') + m; };
 
