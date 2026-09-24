@@ -1,72 +1,86 @@
-"""Logo generator — outlines the ü of Newsreader (wght 620, opsz 72) into the
-petrol tile, dots split out for the brass accent, plus the wordmark.
-Needs the FULL variable Newsreader (opsz axis), not the subset in fonts/:
-  curl -o /tmp/newsreader.woff2 https://fonts.gstatic.com/s/newsreader/v26/cY9AfjOCX1hbuyalUrK4397yjIJFJpc.woff2
-  python3 tools/logo.py /tmp/newsreader.woff2 && python3 build.py
+"""Logo generator — the signature logo.
+The name "Schülein" is outlined from Herr Von Muellerhoff (a pen-signature
+script, SIL OFL), with a tapered brass pen stroke beneath it, the way a
+doctor signs a prescription. Everything is outlined, so the logo needs no
+font at runtime.
+
+  curl -o /tmp/hvm.woff2 <Google Fonts woff2 of "Herr Von Muellerhoff", latin>
+  python3 tools/logo.py /tmp/hvm.woff2 /path/to/jost.woff2
+Writes assets/logo.svg, assets/logo-mark.svg and assets/signature.json.
 """
-import sys
-SRC_FONT = sys.argv[1] if len(sys.argv) > 1 else '/tmp/newsreader.woff2'
+import sys, json, math
 from fontTools.ttLib import TTFont
-from fontTools.varLib.instancer import instantiateVariableFont
 from fontTools.pens.svgPathPen import SVGPathPen
 from fontTools.pens.recordingPen import DecomposingRecordingPen
 from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.boundsPen import BoundsPen
-import re, json
 
-def load(path, loc):
-    f=TTFont(path); i=instantiateVariableFont(f,loc)
-    return i.getGlyphSet(), i.getBestCmap(), i['head'].unitsPerEm
-fmt=lambda v: ('%.2f'%v).rstrip('0').rstrip('.')
+SIG = sys.argv[1] if len(sys.argv) > 1 else '/tmp/hvm.woff2'
+SANS = sys.argv[2] if len(sys.argv) > 2 else 'fonts/jost-latin.woff2'
+INK, BRASS, MUTED, PETROL, CREAM = '#17211F', '#B8913F', '#5C6360', '#1F4A46', '#F4EFE4'
+fmt = lambda v: ('%.2f' % v).rstrip('0').rstrip('.')
 
-def contours(gs,cmap,ch,s,x,base):
-    """list of (path d, bounds) per contour"""
-    rp=DecomposingRecordingPen(gs); gs[cmap[ord(ch)]].draw(rp); rp2=DecomposingRecordingPen(gs); rp.replay(TransformPen(rp2,(s,0,0,-s,x,base))); rp=rp2
-    out=[]; cur=[]
-    for op,args in rp.value:
-        cur.append((op,args))
-        if op in('closePath','endPath'):
-            sp=SVGPathPen(None,ntos=fmt); bp=BoundsPen(None)
-            for o,a in cur: getattr(sp,o)(*a); getattr(bp,o)(*a)
-            out.append((sp.getCommands(),bp.bounds)); cur=[]
-    return out
+def setup(path, loc=None):
+    f = TTFont(path)
+    if loc and 'fvar' in f:
+        from fontTools.varLib.instancer import instantiateVariableFont
+        f = instantiateVariableFont(f, loc)
+    return f.getGlyphSet(), f.getBestCmap(), f['head'].unitsPerEm, f
 
-def text(gs,cmap,upm,t,size,x,base,track=0):
-    s=size/upm; d=''
-    for ch in t:
-        if ch==' ': x+=gs[cmap[32]].width*s+track; continue
-        for c,_ in contours(gs,cmap,ch,s,x,base): d+=c
-        x+=gs[cmap[ord(ch)]].width*s+track
-    return d,x
+def run(font, text, size, x, base, track=0):
+    gs, cmap, upm, f = font
+    s = size / upm; d = ''; bp = BoundsPen(gs)
+    kern = {}
+    for ch in text:
+        if ch == ' ':
+            x += gs[cmap[32]].width * s + track; continue
+        g = cmap[ord(ch)]
+        rp = DecomposingRecordingPen(gs); gs[g].draw(rp)
+        sp = SVGPathPen(None, ntos=fmt)
+        rp.replay(TransformPen(sp, (s, 0, 0, -s, x, base)))
+        rp.replay(TransformPen(bp, (s, 0, 0, -s, x, base)))
+        d += sp.getCommands()
+        x += gs[g].width * s + track
+    return d, bp.bounds, x
 
-nr=load(SRC_FONT,{'wght':620,'opsz':72})
-js=load('fonts/jost-latin.woff2',{'wght':500})
+def stroke(x0, x1, y, sag, rise, th):
+    """a tapered pen stroke: thick in the first third, thin at both ends"""
+    n = 60; top = []; bot = []
+    for i in range(n + 1):
+        u = i / n
+        cx = x0 + (x1 - x0) * u
+        cy = y + sag * math.sin(math.pi * u) - rise * u * u
+        w = th * (math.sin(math.pi * min(1, u * 1.35)) ** .8) * (1 - .55 * u) + .15
+        top.append((cx, cy - w / 2)); bot.append((cx, cy + w / 2))
+    pts = top + bot[::-1]
+    return 'M' + ' L'.join(fmt(a) + ' ' + fmt(b) for a, b in pts) + 'Z'
 
-# --- mark: ü in a 100-unit tile; dots split out so they can take the brass accent
-gs,cmap,upm=nr
-bp=BoundsPen(gs); gs[cmap[ord('ü')]].draw(bp); x0,y0,x1,y1=bp.bounds
-H=60; s=H/(y1-y0); w=(x1-x0)*s
-tx=(100-w)/2 - x0*s; base=50 + ((y1+y0)/2)*s + 1.5   # optical: nudge down, the dots are lighter than the stem
-body='';dots=''
-for d,b in contours(gs,cmap,'ü',s,tx,base):
-    if b[3] < base - 0.55*(y1*s):  # contour lies high up → a dot
-        dots+=d
-    else: body+=d
-json.dump({'body':body,'dots':dots},open('assets/mark.json','w'))
-print('dots found:', dots.count('M'), 'body contours:', body.count('M'))
+sig = setup(SIG)
+sans = setup(SANS, {'wght': 500})
 
-PET='#1F4A46'; CREAM='#F4EFE4'; BRASS='#C9A55C'
-mark_inner=f'<rect width="100" height="100" rx="22" fill="{PET}"/><path fill="{CREAM}" d="{body}"/><path fill="{BRASS}" d="{dots}"/>'
-open('assets/logo-mark.svg','w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">{mark_inner}</svg>\n')
+# --- full logo: signature, pen stroke, caption
+d, (bx0, by0, bx1, by1), _ = run(sig, 'Schülein', 120, 0, 100)
+dx = -bx0 + 4
+d, (bx0, by0, bx1, by1), _ = run(sig, 'Schülein', 120, dx, 100)
+line = stroke(bx0 + 10, bx1 + 6, by1 + 6, 2.2, 7, 4.2)
+cap, (cx0, cy0, cx1, cy1), _ = run(sans, 'ZAHNARZTPRAXIS · NEUBRANDENBURG', 13, bx0 + 18, by1 + 34, track=2.4)
+W = math.ceil(max(bx1 + 10, cx1) + 4); H = math.ceil(cy1 + 4); top = math.floor(by0 - 4)
+open('assets/logo.svg', 'w').write(
+    f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 {top} {W} {H - top}">'
+    f'<path fill="{INK}" stroke="{INK}" stroke-width="1.9" stroke-linejoin="round" d="{d}"/><path fill="{BRASS}" d="{line}"/><path fill="{MUTED}" d="{cap}"/></svg>\n')
 
+# --- inline signature for the page (signature + stroke only, currentColor)
+json.dump({'viewBox': f'0 {top} {W} {math.ceil(by1 + 14) - top}', 'name': d, 'stroke': line},
+          open('assets/signature.json', 'w'))
 
-# --- full logo: mark + wordmark, brass dots on the ü, all outlined
-gs,cmap,upm=nr; s=64/upm; x=122; base=64; ink='';brass=''
-for ch in 'Schülein':
-    for d,b in contours(gs,cmap,ch,s,x,base):
-        if ch=='ü' and b[3] < base-30: brass+=d
-        else: ink+=d
-    x+=gs[cmap[ord(ch)]].width*s
-sd,sx=text(*js,'ZAHNARZTPRAXIS NEUBRANDENBURG',13.5,124,88,track=2.1)
-W=int(max(x,sx))+4
-open('assets/logo.svg','w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} 100">{mark_inner}<path fill="#17211F" d="{ink}"/><path fill="{BRASS}" d="{brass}"/><path fill="#5C6360" d="{sd}"/></svg>\n')
+# --- favicon / touch mark: "Sch" from the signature on petrol, pen stroke beneath
+gs, cmap, upm, _ = sig
+probe, (x0, y0, x1, y1), _ = run(sig, 'Sch', 100, 0, 0)
+w, h = x1 - x0, y1 - y0
+k = min(84 / w, 70 / h)
+sd, (a0, b0, a1, b1), _ = run(sig, 'Sch', 100 * k, 50 - (x0 + w / 2) * k, 46 - (y0 + h / 2) * k)
+st = stroke(a0 + 6, a1 + 2, b1 + 5, 1, 3.5, 3.6)
+open('assets/logo-mark.svg', 'w').write(
+    f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="{PETROL}"/>'
+    f'<path fill="{CREAM}" stroke="{CREAM}" stroke-width="2.6" stroke-linejoin="round" d="{sd}"/><path fill="{BRASS}" d="{st}"/></svg>\n')
+print('logo', W, H - top)

@@ -1,13 +1,30 @@
-/* Zahnarztpraxis Dr. Schülein — interactions. No dependencies. */
+/* Designentwurf „Zahnarztpraxis Dr. Heinrich Schülein“
+   Gestaltung und Code © 2026 Mykhailo Sibahatov. Alle Rechte vorbehalten.
+   Nur zur Ansicht — keine Nutzung ohne schriftliche Vereinbarung (LICENSE).
+   Zahnarztpraxis Dr. Schülein — interactions. No dependencies. */
 (function () {
   'use strict';
+
+  /* ---------- Licence: the draft only runs where it has been licensed ----------
+     Add a domain here once a written agreement is in place. */
+  var LICENSED = ['sibagatovmihail.github.io', 'localhost', '127.0.0.1'];
+  if (location.protocol !== 'file:' && LICENSED.indexOf(location.hostname) === -1) {
+    var lock = document.createElement('div');
+    lock.className = 'licence-lock';
+    lock.setAttribute('role', 'alertdialog');
+    lock.innerHTML = '<div><b>Nicht lizenzierte Kopie</b>' +
+      '<p>Diese Website ist ein urheberrechtlich geschützter Designentwurf von Mykhailo Sibahatov und für diese Domain nicht lizenziert.</p>' +
+      '<p>Nutzungsrechte: <a href="mailto:sibagatovmihail@gmail.com">sibagatovmihail@gmail.com</a></p></div>';
+    var mount = function () { document.body.appendChild(lock); document.documentElement.style.overflow = 'hidden'; };
+    if (document.body) mount(); else document.addEventListener('DOMContentLoaded', mount);
+  }
 
   var root = document.documentElement;
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- preloader: one full landing of the mark, then out on load ---------- */
+  /* ---------- preloader: the signature is written once, then out on load ---------- */
   if (document.querySelector('.preloader')) {
-    var MIN_MS = 1400;
+    var MIN_MS = 1650;
     var lift = function () {
       setTimeout(function () { root.classList.add('is-loaded'); },
         Math.max(0, MIN_MS - performance.now()));
@@ -190,15 +207,35 @@
   paintHours();
   setInterval(paintHours, 60000);
 
-  /* ---------- appointment form — validation; delivery still to be connected ---------- */
+  /* ---------- Perspektivwechsel: bench ↔ chair ---------- */
+  var flip = document.querySelector('.flip');
+  if (flip) {
+    flip.querySelectorAll('.toggle__btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var side = btn.getAttribute('data-side');
+        flip.setAttribute('data-side', side);
+        flip.querySelectorAll('.toggle__btn').forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+      });
+    });
+  }
+
+  /* ---------- Mythos oder Fakt: turn a card over ---------- */
+  document.querySelectorAll('.myth').forEach(function (card) {
+    card.addEventListener('click', function () {
+      card.setAttribute('aria-pressed', card.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+    });
+  });
+
+  /* ---------- appointment form — draft: validates, then shows the thank-you state ---------- */
   var form = document.getElementById('contact-form');
   if (form) {
     var status = form.querySelector('.form__status');
     var messages = {
       'f-name': 'Bitte geben Sie Ihren Namen an.',
       'f-tel': 'Bitte geben Sie eine Telefonnummer an, damit wir Sie zurückrufen können.',
-      'f-mail': 'Bitte prüfen Sie die E-Mail-Adresse.',
-      'f-consent': 'Bitte bestätigen Sie die Datenschutzhinweise.'
+      'f-mail': 'Bitte prüfen Sie die E-Mail-Adresse.'
     };
     var check = function (input) {
       var field = input.closest('.field');
@@ -216,7 +253,7 @@
     };
     var checked = form.querySelectorAll('[required], [type="email"]');
     checked.forEach(function (input) {
-      input.addEventListener('blur', function () { if (input.value || input.type === 'checkbox') check(input); });
+      input.addEventListener('blur', function () { if (input.value) check(input); });
       input.addEventListener('input', function () { if (input.closest('.field').classList.contains('is-invalid')) check(input); });
     });
     form.addEventListener('submit', function (e) {
@@ -224,8 +261,9 @@
       var firstBad = null;
       checked.forEach(function (input) { if (!check(input) && !firstBad) firstBad = input; });
       if (firstBad) { firstBad.focus(); return; }
-      /* TODO before launch: connect a DSGVO-compliant form service (e.g. Web3Forms, EU hosting). */
-      status.textContent = 'Das Formular ist noch nicht freigeschaltet. Bitte rufen Sie uns an: 0395 544 29 61.';
+      var name = form.querySelector('#f-name').value.trim().split(/\s+/)[0];
+      form.closest('.form-cell').classList.add('is-sent');
+      status.textContent = 'Danke, ' + name + '! Wir rufen Sie in den nächsten Tagen zurück.';
     });
   }
 
