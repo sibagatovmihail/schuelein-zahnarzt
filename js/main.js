@@ -102,6 +102,42 @@
     });
   }
 
+  /* ---------- header hover: one brass block glides from link to link ----------
+     Wide screens with a real pointer only; it appears in place on first
+     entry (no slide-in from 0) and fades out when the pointer leaves. */
+  var menu = document.querySelector('.strip__menu');
+  var wideHover = window.matchMedia('(min-width: 62.0625rem) and (hover: hover) and (pointer: fine)');
+  if (menu && !reduceMotion) {
+    var glider = document.createElement('span');
+    glider.className = 'strip__glider';
+    glider.setAttribute('aria-hidden', 'true');
+    menu.prepend(glider);
+    var moveTo = function (link) {
+      glider.style.left = link.offsetLeft + 'px';
+      glider.style.top = link.offsetTop + 'px';
+      glider.style.width = link.offsetWidth + 'px';
+    };
+    var showGlider = function (link) {
+      if (!wideHover.matches) return;
+      if (!menu.classList.contains('has-glider')) {
+        glider.style.transition = 'none';
+        moveTo(link);
+        void glider.offsetWidth;
+        glider.style.transition = '';
+        menu.classList.add('has-glider');
+      } else {
+        moveTo(link);
+      }
+    };
+    var hideGlider = function () { menu.classList.remove('has-glider'); };
+    menu.querySelectorAll('.strip__link').forEach(function (link) {
+      link.addEventListener('mouseenter', function () { showGlider(link); });
+      link.addEventListener('focus', function () { showGlider(link); });
+      link.addEventListener('blur', hideGlider);
+    });
+    menu.querySelector('.strip__links').addEventListener('mouseleave', hideGlider);
+  }
+
   /* ---------- reveal: whole groups, never per item ---------- */
   var reveals = document.querySelectorAll('.reveal');
   function finish(el) {

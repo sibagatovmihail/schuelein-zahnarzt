@@ -13,7 +13,7 @@ schriftlicher Vereinbarung erlaubt. Details siehe [LICENSE](LICENSE).
 - **Hero** mit Porträt von Dr. Schülein, Live-Anzeige „geöffnet / geschlossen“ und Kennzahlen
 - **Die Praxis:** Zahntechnikermeister und Zahnarzt
 - **Perspektivwechsel:** dieselbe Krone von der Werkbank und aus dem Behandlungsstuhl gesehen (Umschalter)
-- **Leistungen**, **Die Räume** (Fotos), **Schlafmedizin**
+- **Leistungen**, **Die Räume** (Fotos), **Das Team** (Rollen; Namen und Fotos folgen von der Praxis), **Schlafmedizin**
 - **Mythos oder Fakt?**: sechs Karten zum Umdrehen
 - **Patientenstimmen**, **Sprechzeiten** als Wochenplan
 - **FAQ**, **Terminanfrage**

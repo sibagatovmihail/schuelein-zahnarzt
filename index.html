@@ -14,7 +14,7 @@
   <meta name="author" content="Mykhailo Sibahatov">
   <meta name="copyright" content="Gestaltung und Code © 2026 Mykhailo Sibahatov">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#F2EFE8">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
@@ -39,6 +39,7 @@
     <symbol id="i-plus" viewBox="0 0 14 14"><path d="M7 1.5v11M1.5 7h11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="4.25" fill="currentColor"/><path d="M3.5 22c.6-4.9 4-8 8.5-8s7.9 3.1 8.5 8z" fill="currentColor"/></symbol>
     <symbol id="i-turn" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
@@ -70,6 +71,7 @@
         <ul class="strip__links">
           <li><a class="strip__link" href="#praxis"><span>Praxis</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
           <li><a class="strip__link" href="#leistungen"><span>Leistungen</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a class="strip__link" href="#team"><span>Team</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
           <li><a class="strip__link" href="#schlaf"><span>Schlafmedizin</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
           <li><a class="strip__link" href="#zeiten"><span>Sprechzeiten</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
           <li><a class="strip__link" href="#faq"><span>FAQ</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
@@ -91,7 +93,7 @@
       <div class="container hero__container">
         <div class="hero__grid">
           <div class="hero__content">
-            <div class="display"><h1>Ein Zahnarzt, der Zahn&shy;ersatz selbst gebaut hat.</h1></div>
+            <div class="display"><h1>Ein Zahnarzt, der Zahn&shy;ersatz <em>selbst gebaut</em> hat.</h1></div>
             <div class="lead"><p>Dr. Heinrich Schülein war Zahntechnikermeister, bevor er Zahnarzt wurde. In seiner Praxis in der Pfaffenstraße verbindet er beides: gründliche Diagnostik und ein geschultes Auge für Passform, Farbe und Funktion.</p></div>
             <div class="hero__actions">
               <a class="btn btn--petrol" href="#kontakt">Termin anfragen</a>
@@ -162,7 +164,7 @@
         <div class="flip__head reveal">
           <div class="section-head">
             <div class="eyebrow"><p>Perspektivwechsel</p></div>
-            <div class="heading"><h2>Dieselbe Krone. Zwei Blickwinkel.</h2></div>
+            <div class="heading"><h2>Dieselbe Krone. <em>Zwei Blickwinkel.</em></h2></div>
             <div class="lead"><p>Dr. Schülein kennt beide Seiten der Arbeit. Schalten Sie um und sehen Sie, was das für Sie bedeutet.</p></div>
           </div>
           <div class="toggle" role="group" aria-label="Blickwinkel wählen">
@@ -210,7 +212,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div class="eyebrow"><p>Leistungen</p></div>
-          <div class="heading"><h2>Von der Kontrolle bis zur Schnarchschiene.</h2></div>
+          <div class="heading"><h2>Von der Kontrolle bis zur <em>Schnarchschiene.</em></h2></div>
         </div>
 
         <div class="index reveal" data-index>
@@ -314,12 +316,59 @@
       </div>
     </section>
 
+    <!-- Team: one card per role. Names and photos come from the practice. -->
+    <section class="section" id="team">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><p>Das Team</p></div>
+          <div class="heading"><h2>Herzlich empfangen, <em>gut begleitet.</em></h2></div>
+          <div class="lead"><p>Hinter jeder Behandlung steht ein eingespieltes Team. Patientinnen und Patienten beschreiben es als herzlich, empathisch und transparent.</p></div>
+        </div>
+
+        <div class="team reveal" tabindex="0" aria-label="Das Praxisteam">
+          <article class="member member--lead">
+            <div class="member__photo" aria-hidden="true"><svg><use href="#sig"/></svg></div>
+            <div class="member__body">
+              <div class="member__kicker"><p>Behandlung</p></div>
+              <div class="member__role"><h3>Dr. Heinrich Schülein</h3></div>
+              <div class="member__text"><p>Zahnarzt und Zahntechnikermeister. Untersucht, plant und behandelt selbst, vom ersten Befund bis zur letzten Einprobe.</p></div>
+            </div>
+          </article>
+          <article class="member">
+            <div class="member__photo" aria-hidden="true"><svg><use href="#i-person"/></svg><span class="member__slot">Foto folgt</span></div>
+            <div class="member__body">
+              <div class="member__kicker"><p>Telefon &amp; Empfang</p></div>
+              <div class="member__role"><h3>Empfang und Verwaltung</h3></div>
+              <div class="member__text"><p>Vergibt Termine, ruft zurück und erklärt Heil- und Kostenpläne. Meist die erste Stimme, die Sie von uns hören.</p></div>
+            </div>
+          </article>
+          <article class="member">
+            <div class="member__photo" aria-hidden="true"><svg><use href="#i-person"/></svg><span class="member__slot">Foto folgt</span></div>
+            <div class="member__body">
+              <div class="member__kicker"><p>Am Behandlungsstuhl</p></div>
+              <div class="member__role"><h3>Zahnmedizinische Assistenz</h3></div>
+              <div class="member__text"><p>Bereitet alles vor, assistiert bei der Behandlung und bleibt an Ihrer Seite, wenn es aufregend wird.</p></div>
+            </div>
+          </article>
+          <article class="member">
+            <div class="member__photo" aria-hidden="true"><svg><use href="#i-person"/></svg><span class="member__slot">Foto folgt</span></div>
+            <div class="member__body">
+              <div class="member__kicker"><p>Vorsorge</p></div>
+              <div class="member__role"><h3>Prophylaxe</h3></div>
+              <div class="member__text"><p>Professionelle Zahnreinigung, Tipps für die Pflege zu Hause und Kinderprophylaxe mit viel Geduld.</p></div>
+            </div>
+          </article>
+        </div>
+        <p class="team__note reveal">Namen und Fotos des Teams ergänzen wir gemeinsam mit der Praxis.</p>
+      </div>
+    </section>
+
     <!-- Schlafmedizin: the night, from falling asleep to the morning check -->
     <section class="section section--night" id="schlaf">
       <div class="container">
         <div class="section-head reveal">
           <div class="eyebrow"><p>Zahnärztliche Schlafmedizin</p></div>
-          <div class="heading"><h2>Schnarchen ist kein Schicksal.</h2></div>
+          <div class="heading"><h2>Schnarchen ist <em>kein Schicksal.</em></h2></div>
           <div class="lead"><p>Lautes Schnarchen raubt oft zwei Menschen den Schlaf. Hinter nächtlichen Atemaussetzern kann eine Schlafapnoe stecken, die Herz und Kreislauf belastet. Eine individuell angepasste Schiene hilft vielen Betroffenen.</p></div>
         </div>
 
@@ -556,7 +605,7 @@
       <div class="container">
         <div class="section-head reveal">
           <div class="eyebrow"><p>Kontakt</p></div>
-          <div class="heading"><h2>Wir freuen uns auf Sie.</h2></div>
+          <div class="heading"><h2>Wir freuen uns <em>auf Sie.</em></h2></div>
         </div>
 
         <div class="contact reveal">
