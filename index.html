@@ -38,6 +38,7 @@
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17.2l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8z"/></symbol>
     <symbol id="i-plus" viewBox="0 0 14 14"><path d="M7 1.5v11M1.5 7h11" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
     <symbol id="i-turn" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 13.7-5.6L20 8.5M20 4v4.5h-4.5M20 12a8 8 0 0 1-13.7 5.6L4 15.5M4 20v-4.5h4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
@@ -67,11 +68,11 @@
       </div>
       <div class="strip__menu" id="strip-menu">
         <ul class="strip__links">
-          <li><a class="strip__link" href="#praxis">Praxis</a></li>
-          <li><a class="strip__link" href="#leistungen">Leistungen</a></li>
-          <li><a class="strip__link" href="#schlaf">Schlafmedizin</a></li>
-          <li><a class="strip__link" href="#zeiten">Sprechzeiten</a></li>
-          <li><a class="strip__link" href="#faq">FAQ</a></li>
+          <li><a class="strip__link" href="#praxis"><span>Praxis</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a class="strip__link" href="#leistungen"><span>Leistungen</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a class="strip__link" href="#schlaf"><span>Schlafmedizin</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a class="strip__link" href="#zeiten"><span>Sprechzeiten</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a class="strip__link" href="#faq"><span>FAQ</span><svg class="strip__arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
         </ul>
         <div class="strip__cta">
           <a class="btn btn--petrol" href="#kontakt">Termin anfragen</a>
@@ -85,7 +86,7 @@
 
   <main id="main">
 
-    <!-- Hero: statement + the nameplate from the door, with live office hours -->
+    <!-- Hero: statement left, Dr. Schülein right with a live open/closed chip -->
     <section class="hero" id="top">
       <div class="container hero__container">
         <div class="hero__grid">
@@ -94,36 +95,25 @@
             <div class="lead"><p>Dr. Heinrich Schülein war Zahntechnikermeister, bevor er Zahnarzt wurde. In seiner Praxis in der Pfaffenstraße verbindet er beides: gründliche Diagnostik und ein geschultes Auge für Passform, Farbe und Funktion.</p></div>
             <div class="hero__actions">
               <a class="btn btn--petrol" href="#kontakt">Termin anfragen</a>
-              <a class="btn btn--plain" href="tel:+493955442961"><svg aria-hidden="true"><use href="#i-phone"/></svg>0395 544 29 61</a>
+              <a class="btn btn--plain hero__tel" href="tel:+493955442961" aria-label="Anrufen: 0395 544 29 61"><svg aria-hidden="true"><use href="#i-phone"/></svg><span class="hero__tel-num">0395 544 29 61</span></a>
             </div>
           </div>
 
-          <aside class="plate" aria-label="Praxisschild">
-            <div class="plate__head">
-              <div class="plate__name">
-                <p class="plate__title">Dr. Heinrich Schülein</p>
-                <p class="plate__role">Zahnarzt · Zahntechnikermeister</p>
-              </div>
-            </div>
-            <div class="plate__status" data-status>
-              <span class="plate__dot" aria-hidden="true"></span>
-              <span data-status-text>Sprechzeiten</span>
-            </div>
-            <dl class="plate__hours" data-hours>
-              <div data-day="1"><dt>Mo</dt><dd>8–13 · 14:30–19 Uhr</dd></div>
-              <div data-day="2"><dt>Di</dt><dd>8–12 Uhr</dd></div>
-              <div data-day="3"><dt>Mi</dt><dd>8–12 · 13–16 Uhr</dd></div>
-              <div data-day="4"><dt>Do</dt><dd>8–13 · 14:30–19 Uhr</dd></div>
-              <div data-day="5"><dt>Fr</dt><dd>8–12 Uhr</dd></div>
-            </dl>
-            <p class="plate__addr">Pfaffenstraße 27 · 17033 Neubrandenburg</p>
-          </aside>
+          <figure class="hero__media">
+            <img src="assets/img/dr-schuelein.jpg" alt="Dr. Heinrich Schülein" width="900" height="1320" fetchpriority="high" decoding="async">
+            <figcaption class="hero__card">
+              <span class="hero__name">Dr. Heinrich Schülein</span>
+              <span class="hero__role">Zahnarzt · Zahntechnikermeister</span>
+              <span class="status" data-status><span class="status__dot" aria-hidden="true"></span><span data-status-text>Sprechzeiten</span></span>
+            </figcaption>
+          </figure>
         </div>
 
-        <ul class="hero__facts" aria-label="Auf einen Blick">
-          <li><svg aria-hidden="true"><use href="#i-star"/></svg>9,9 von 10 bei sanego</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Alle Kassen und privat</li>
-          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Mitglied der DGZS · Schlafmedizin</li>
+        <ul class="facts" aria-label="Auf einen Blick">
+          <li class="fact"><b>9,9<small>/10</small></b><span>12 Bewertungen auf sanego</span></li>
+          <li class="fact"><b>4,7<small>/5</small></b><span>36 Bewertungen auf Google</span></li>
+          <li class="fact"><b>Bis 19 Uhr</b><span>montags und donnerstags</span></li>
+          <li class="fact"><b>DGZS</b><span>zertifiziert in Schlafmedizin</span></li>
         </ul>
       </div>
     </section>
@@ -132,15 +122,9 @@
     <section class="section section--sand" id="praxis">
       <div class="container">
         <div class="story">
-          <div class="story__top">
-            <figure class="portrait reveal">
-              <img src="assets/img/dr-schuelein.jpg" alt="Porträt von Dr. Heinrich Schülein" width="900" height="1320" loading="lazy" decoding="async">
-              <figcaption><span>Dr. Heinrich Schülein</span><span>Zahnarzt · Zahntechnikermeister</span></figcaption>
-            </figure>
-            <div class="story__lead reveal">
-              <div class="eyebrow"><p>Die Praxis</p></div>
-              <p class="story__statement">Die meisten Zahnärzte schicken den Abdruck ins Labor und sehen die Arbeit erst bei der Eingliederung. <em>Dr. Schülein hat jahrelang an der anderen Seite der Werkbank gestanden.</em> Das merkt man bei jeder Krone, jeder Brücke und jeder Prothese.</p>
-            </div>
+          <div class="story__lead reveal">
+            <div class="eyebrow"><p>Die Praxis</p></div>
+            <p class="story__statement">Die meisten Zahnärzte schicken den Abdruck ins Labor und sehen die Arbeit erst bei der Eingliederung. <em>Dr. Schülein hat jahrelang an der anderen Seite der Werkbank gestanden.</em> Das merkt man bei jeder Krone, jeder Brücke und jeder Prothese.</p>
           </div>
 
           <ol class="path reveal" aria-label="Werdegang">

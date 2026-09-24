@@ -10,8 +10,8 @@ schriftlicher Vereinbarung erlaubt. Details siehe [LICENSE](LICENSE).
 ## Inhalt des Entwurfs
 
 - **Logo:** die Unterschrift „Schülein“ mit einem Federstrich in Messing, so wie ein Arzt ein Rezept unterschreibt.
-- **Hero** mit Praxisschild und Live-Anzeige „geöffnet / geschlossen“
-- **Die Praxis:** Porträt, Zahntechnikermeister und Zahnarzt
+- **Hero** mit Porträt von Dr. Schülein, Live-Anzeige „geöffnet / geschlossen“ und Kennzahlen
+- **Die Praxis:** Zahntechnikermeister und Zahnarzt
 - **Perspektivwechsel:** dieselbe Krone von der Werkbank und aus dem Behandlungsstuhl gesehen (Umschalter)
 - **Leistungen**, **Die Räume** (Fotos), **Schlafmedizin**
 - **Mythos oder Fakt?**: sechs Karten zum Umdrehen

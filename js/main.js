@@ -159,6 +159,7 @@
          fires enter/move events at unchanged coordinates — ignore those */
       btn.addEventListener('pointermove', function (e) {
         if (e.pointerType !== 'mouse' || !hoverable.matches || narrow.matches) return;
+        if (!e.movementX && !e.movementY) return;               /* synthetic move after a scroll */
         if (e.clientX === lastX && e.clientY === lastY) return;
         lastX = e.clientX; lastY = e.clientY;
         if (!entry.classList.contains('is-active')) activate(entry, true);
@@ -182,7 +183,7 @@
 
   /* ---------- office hours: live status in Berlin time ----------
      Computed in the browser, no request. Public holidays are not known here,
-     so the plate says "laut Sprechzeiten". */
+     the chip only reads the regular hours. */
   var HOURS = { 1: [[8, 13], [14.5, 19]], 2: [[8, 12]], 3: [[8, 12], [13, 16]], 4: [[8, 13], [14.5, 19]], 5: [[8, 12]] };
   var DAYS = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
   var fmt = function (h) { var m = Math.round((h % 1) * 60); return Math.floor(h) + ':' + (m < 10 ? '0' : '') + m; };
