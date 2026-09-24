@@ -164,7 +164,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 /* marker highlight: an upright brass highlighter stroke behind one phrase,
    in the hero title and the section titles alike */
-.heading em, .display em {
+.heading em, .display em, .story__statement em {
   font-style: normal; color: inherit;
   padding: 0 .12em; margin: 0 -.06em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 40' preserveAspectRatio='none'%3E%3Cpath d='M3 9.5C40 6.5 120 5 197 7.5L199 35C130 37.5 60 38 1 36.5Z' fill='%23C9A55C' fill-opacity='.34'/%3E%3C/svg%3E") no-repeat 0 78% / 100% .62em;
@@ -333,7 +333,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
   font-weight: 400; line-height: 1.28; letter-spacing: -.015em;
   max-width: 56rem; text-wrap: pretty;
 }
-.story__statement em { font-style: italic; color: var(--petrol); }
 
 /* Werdegang: a rail with four stations (vertical on phones) */
 .path {
