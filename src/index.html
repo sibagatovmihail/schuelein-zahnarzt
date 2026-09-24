@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Zahnarztpraxis Dr. Heinrich Schülein · Zahnarzt in Neubrandenburg</title>
+  <meta name="description" content="Zahnarztpraxis Dr. Heinrich Schülein in der Neubrandenburger Innenstadt: Zahnarzt und Zahntechnikermeister. Vorsorge, Zahnerhaltung, Zahnersatz, Oralchirurgie und zahnärztliche Schlafmedizin. Pfaffenstraße 27, Tel. 0395 5442961.">
+  <meta name="theme-color" content="#F2EFE8">
+  <link rel="canonical" href="https://schuelein-zahnheilkunde.de/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Zahnarztpraxis Dr. Heinrich Schülein · Neubrandenburg">
+  <meta property="og:description" content="Ein Zahnarzt, der Zahnersatz selbst gebaut hat. Praxis in der Pfaffenstraße 27, Neubrandenburg.">
+  <meta property="og:image" content="https://schuelein-zahnheilkunde.de/assets/og.png">
+  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="fonts/newsreader.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/jost-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    /* freeze the viewport unit before first paint — refreshed on width change only */
+    document.documentElement.classList.add('js');
+    window.__vhPx = window.innerHeight;
+    document.documentElement.style.setProperty('--vh', (window.__vhPx * 0.01) + 'px');
+  </script>
+  <script src="js/main.js" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Zahnarztpraxis Dr. Heinrich Schülein",
+    "description": "Zahnarztpraxis in der Neubrandenburger Innenstadt. Zahnarzt und Zahntechnikermeister.",
+    "url": "https://schuelein-zahnheilkunde.de/",
+    "image": "https://schuelein-zahnheilkunde.de/assets/og.png",
+    "logo": "https://schuelein-zahnheilkunde.de/assets/logo.svg",
+    "telephone": "+49 395 5442961",
+    "faxNumber": "+49 395 5661985",
+    "email": "info@schuelein-zahnheilkunde.de",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Pfaffenstraße 27",
+      "postalCode": "17033",
+      "addressLocality": "Neubrandenburg",
+      "addressRegion": "Mecklenburg-Vorpommern",
+      "addressCountry": "DE"
+    },
+    "founder": { "@type": "Person", "name": "Dr. Heinrich Schülein", "jobTitle": "Zahnarzt, Zahntechnikermeister" },
+    "memberOf": { "@type": "Organization", "name": "Deutsche Gesellschaft Zahnärztliche Schlafmedizin (DGZS)" },
+    "medicalSpecialty": "Dentistry",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "08:00", "closes": "13:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Thursday"], "opens": "14:30", "closes": "19:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "12:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "13:00", "closes": "16:00" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  {{SPRITE}}
+
+  <!-- Preloader: the tile lands, the u rises, then the two brass dots drop in -->
+  <div class="preloader" aria-hidden="true">
+    <svg class="preloader__mark" viewBox="0 0 100 100">
+      <rect class="preloader__tile" width="100" height="100" rx="22"/>
+      <path class="preloader__u" d="{{MARK_BODY}}"/>
+      <path class="preloader__dots" d="{{MARK_DOTS}}"/>
+    </svg>
+  </div>
+
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  {{HEADER}}
+
+  <main id="main">
+
+    <!-- Hero: statement + the nameplate from the door, with live office hours -->
+    <section class="hero" id="top">
+      <div class="container hero__container">
+        <div class="hero__grid">
+          <div class="hero__content">
+            <div class="eyebrow"><p>Zahnarztpraxis · Neubrandenburg Innenstadt</p></div>
+            <div class="display"><h1>Ein Zahnarzt, der Zahn&shy;ersatz selbst gebaut hat.</h1></div>
+            <div class="lead"><p>Dr. Heinrich Schülein war Zahntechnikermeister, bevor er Zahnarzt wurde. In seiner Praxis in der Pfaffenstraße verbindet er beides: gründliche Diagnostik und ein geschultes Auge für Passform, Farbe und Funktion.</p></div>
+            <div class="hero__actions">
+              <a class="btn btn--petrol" href="#kontakt">Termin anfragen</a>
+              <a class="btn btn--plain" href="tel:+493955442961"><svg aria-hidden="true"><use href="#i-phone"/></svg>0395 544 29 61</a>
+            </div>
+          </div>
+
+          <aside class="plate" aria-label="Praxisschild">
+            <div class="plate__head">
+              <svg class="plate__mark" aria-hidden="true"><use href="#mark"/></svg>
+              <div class="plate__name">
+                <p class="plate__title">Dr. Heinrich Schülein</p>
+                <p class="plate__role">Zahnarzt · Zahntechnikermeister</p>
+              </div>
+            </div>
+            <div class="plate__status" data-status>
+              <span class="plate__dot" aria-hidden="true"></span>
+              <span data-status-text>Sprechzeiten</span>
+            </div>
+            <dl class="plate__hours" data-hours>
+              <div data-day="1"><dt>Mo</dt><dd>8–13 · 14:30–19 Uhr</dd></div>
+              <div data-day="2"><dt>Di</dt><dd>8–12 Uhr</dd></div>
+              <div data-day="3"><dt>Mi</dt><dd>8–12 · 13–16 Uhr</dd></div>
+              <div data-day="4"><dt>Do</dt><dd>8–12 · 14:30–19 Uhr</dd></div>
+              <div data-day="5"><dt>Fr</dt><dd>8–12 Uhr</dd></div>
+            </dl>
+            <p class="plate__addr">Pfaffenstraße 27 · 17033 Neubrandenburg</p>
+          </aside>
+        </div>
+
+        <ul class="hero__facts" aria-label="Auf einen Blick">
+          <li><svg aria-hidden="true"><use href="#i-star"/></svg>9,9 von 10 bei sanego</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Alle Kassen und privat</li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg>Mitglied der DGZS · Schlafmedizin</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Praxis: two trades in one pair of hands -->
+    <section class="section section--sand" id="praxis">
+      <div class="container">
+        <div class="story">
+          <div class="eyebrow reveal"><p>Die Praxis</p></div>
+          <p class="story__statement reveal">Die meisten Zahnärzte schicken den Abdruck ins Labor und sehen die Arbeit erst bei der Eingliederung. <em>Dr. Schülein hat jahrelang an der anderen Seite der Werkbank gestanden.</em> Das merkt man bei jeder Krone, jeder Brücke und jeder Prothese.</p>
+
+          <ol class="path reveal" aria-label="Werdegang">
+            <li><span class="path__k">Handwerk</span><span class="path__v">Zahntechnikermeister</span></li>
+            <li><span class="path__k">Studium</span><span class="path__v">Zahnmedizin und Promotion</span></li>
+            <li><span class="path__k">Klinik</span><span class="path__v">Universitätszahnmedizin Greifswald</span></li>
+            <li><span class="path__k">Heute</span><span class="path__v">Eigene Praxis in Neubrandenburg</span></li>
+          </ol>
+
+          <div class="gains reveal">
+            <article class="gain">
+              <div class="gain__num"><span>i</span></div>
+              <div class="gain__title"><h3>Passform, bevor sie stört</h3></div>
+              <div class="gain__text"><p>Wer Kronen selbst modelliert hat, sieht schon an der Präparation, ob der Zahnersatz später sitzen wird. Nachbessern wird seltener.</p></div>
+            </article>
+            <article class="gain">
+              <div class="gain__num"><span>ii</span></div>
+              <div class="gain__title"><h3>Eine Sprache mit dem Labor</h3></div>
+              <div class="gain__text"><p>Farbe, Form und Material bespricht er mit dem Zahntechniker auf Augenhöhe. So wird Ihr Zahnersatz so, wie er gedacht war.</p></div>
+            </article>
+            <article class="gain">
+              <div class="gain__num"><span>iii</span></div>
+              <div class="gain__title"><h3>Ehrlich beim Material</h3></div>
+              <div class="gain__text"><p>Er weiß aus der Werkstatt, was Keramik, Zirkon und Metall leisten und was nicht. Sie bekommen eine Empfehlung, die zu Ihrem Fall passt.</p></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leistungen: an index — names on the left, the open entry on the right -->
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><p>Leistungen</p></div>
+          <div class="heading"><h2>Von der Kontrolle bis zur Schnarchschiene.</h2></div>
+        </div>
+
+        <div class="index reveal" data-index>
+          <article class="entry is-active">
+            <button class="entry__name" type="button" aria-expanded="true" aria-controls="e-1" id="e-1-btn"><span class="entry__no">01</span><span>Vorsorge &amp; Prophylaxe</span></button>
+            <div class="entry__body" id="e-1" role="region" aria-labelledby="e-1-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Regelmäßige Kontrolle und professionelle Zahnreinigung sind die günstigste Zahnbehandlung, die es gibt.</p></div>
+                <div class="entry__text"><p>Wir entfernen Beläge und Verfärbungen, erkennen Karies und Zahnfleischentzündungen früh und zeigen Ihnen, wo Ihre Pflege zu Hause noch nachhelfen kann. Kinder lernen bei uns das Zähneputzen spielerisch.</p></div>
+                <ul class="tags"><li>Kontrolluntersuchung</li><li>Professionelle Zahnreinigung</li><li>Kinderprophylaxe</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <button class="entry__name" type="button" aria-expanded="false" aria-controls="e-2" id="e-2-btn"><span class="entry__no">02</span><span>Zahnerhaltung</span></button>
+            <div class="entry__body" id="e-2" role="region" aria-labelledby="e-2-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Der eigene Zahn ist fast immer die beste Lösung. Wir kämpfen um ihn.</p></div>
+                <div class="entry__text"><p>Zahnfarbene Füllungen, Wurzelkanalbehandlungen und die Behandlung von Parodontitis gehören zum Alltag der Praxis. Vor jeder Behandlung erklären wir Ihnen die Möglichkeiten und was sie kosten.</p></div>
+                <ul class="tags"><li>Füllungen</li><li>Wurzelbehandlung</li><li>Parodontitis</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <button class="entry__name" type="button" aria-expanded="false" aria-controls="e-3" id="e-3-btn"><span class="entry__no">03</span><span>Zahnersatz</span></button>
+            <div class="entry__body" id="e-3" role="region" aria-labelledby="e-3-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Hier zahlt sich die Meisterausbildung am meisten aus.</p></div>
+                <div class="entry__text"><p>Kronen, Brücken, Teil- und Vollprothesen plant Dr. Schülein mit dem Blick des Zahntechnikers: Wie wird die Arbeit gefertigt, wie hält sie, wie sieht sie neben den Nachbarzähnen aus? Die Farbe bestimmen wir sorgfältig bei Tageslicht.</p></div>
+                <ul class="tags"><li>Kronen</li><li>Brücken</li><li>Prothesen</li><li>Reparaturen</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <button class="entry__name" type="button" aria-expanded="false" aria-controls="e-4" id="e-4-btn"><span class="entry__no">04</span><span>Oralchirurgie</span></button>
+            <div class="entry__body" id="e-4" role="region" aria-labelledby="e-4-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Weisheitszähne und nicht erhaltbare Zähne entfernen wir ruhig und schonend.</p></div>
+                <div class="entry__text"><p>Eine gute Betäubung und ein Behandler, der nicht hetzt, machen den Unterschied. Nach dem Eingriff bekommen Sie klare Hinweise für die ersten Tage und einen Kontrolltermin.</p></div>
+                <ul class="tags"><li>Weisheitszähne</li><li>Zahnentfernung</li><li>Nachsorge</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <button class="entry__name" type="button" aria-expanded="false" aria-controls="e-5" id="e-5-btn"><span class="entry__no">05</span><span>Schlafmedizin</span></button>
+            <div class="entry__body" id="e-5" role="region" aria-labelledby="e-5-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Eine Schiene gegen Schnarchen und leichte bis mittlere Schlafapnoe.</p></div>
+                <div class="entry__text"><p>Dr. Schülein ist Mitglied der Deutschen Gesellschaft Zahnärztliche Schlafmedizin. Die Unterkieferprotrusionsschiene hält den Unterkiefer nachts leicht vorn und die Atemwege frei. Mehr dazu weiter unten.</p></div>
+                <ul class="tags"><li>Schnarchschiene</li><li>Schlafapnoe</li><li>DGZS</li></ul>
+                <a class="link-arrow" href="#schlaf">So läuft die Behandlung ab</a>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <button class="entry__name" type="button" aria-expanded="false" aria-controls="e-6" id="e-6-btn"><span class="entry__no">06</span><span>Aligner</span></button>
+            <div class="entry__body" id="e-6" role="region" aria-labelledby="e-6-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Schiefe Zähne mit durchsichtigen Schienen richten, ohne feste Spange.</p></div>
+                <div class="entry__text"><p>Für Erwachsene mit leichten bis mittleren Zahnfehlstellungen bieten wir die Behandlung mit Invisalign-Alignern an. In einem Beratungstermin klären wir, ob sie für Sie infrage kommt.</p></div>
+                <ul class="tags"><li>Invisalign</li><li>Erwachsene</li><li>Beratung</li></ul>
+              </div>
+            </div>
+          </article>
+          <article class="entry">
+            <button class="entry__name" type="button" aria-expanded="false" aria-controls="e-7" id="e-7-btn"><span class="entry__no">07</span><span>Kinder &amp; Angstpatienten</span></button>
+            <div class="entry__body" id="e-7" role="region" aria-labelledby="e-7-btn">
+              <div class="entry__inner">
+                <div class="entry__lead"><p>Wer Angst hat, bekommt bei uns zuerst Zeit.</p></div>
+                <div class="entry__text"><p>Wir erklären jeden Schritt, bevor er passiert, und hören auf, wenn Sie die Hand heben. Viele unserer Patientinnen und Patienten kamen mit großer Angst und kommen heute entspannt zur Kontrolle.</p></div>
+                <ul class="tags"><li>Viel Zeit</li><li>Jeder Schritt erklärt</li><li>Kinder willkommen</li></ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schlafmedizin: the night, from falling asleep to the morning check -->
+    <section class="section section--night" id="schlaf">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><p>Zahnärztliche Schlafmedizin</p></div>
+          <div class="heading"><h2>Schnarchen ist kein Schicksal.</h2></div>
+          <div class="lead"><p>Lautes Schnarchen raubt oft zwei Menschen den Schlaf. Hinter nächtlichen Atemaussetzern kann eine Schlafapnoe stecken, die Herz und Kreislauf belastet. Eine individuell angepasste Schiene hilft vielen Betroffenen.</p></div>
+        </div>
+
+        <ol class="night reveal">
+          <li class="night__step">
+            <div class="night__time"><span>Schritt 1</span></div>
+            <div class="night__title"><h3>Diagnose</h3></div>
+            <div class="night__text"><p>Ein Schlafmediziner klärt im Schlaflabor oder mit einem Messgerät für zu Hause, ob eine Schlafapnoe vorliegt.</p></div>
+          </li>
+          <li class="night__step">
+            <div class="night__time"><span>Schritt 2</span></div>
+            <div class="night__title"><h3>Befund &amp; Abdruck</h3></div>
+            <div class="night__text"><p>Wir prüfen Zähne, Kiefergelenk und Zahnfleisch und nehmen die Abdrücke für Ihre Schiene.</p></div>
+          </li>
+          <li class="night__step">
+            <div class="night__time"><span>Schritt 3</span></div>
+            <div class="night__title"><h3>Ihre Schiene</h3></div>
+            <div class="night__text"><p>Die Unterkieferprotrusionsschiene wird individuell gefertigt und in kleinen Schritten eingestellt, bis sie wirkt und bequem sitzt.</p></div>
+          </li>
+          <li class="night__step">
+            <div class="night__time"><span>Schritt 4</span></div>
+            <div class="night__title"><h3>Kontrolle</h3></div>
+            <div class="night__text"><p>Eine erneute Messung zeigt, ob die Atmung frei bleibt. Danach sehen wir uns regelmäßig zur Kontrolle.</p></div>
+          </li>
+        </ol>
+
+        <div class="night__note reveal"><p>Bei nachgewiesener obstruktiver Schlafapnoe übernehmen die gesetzlichen Krankenkassen die Schiene unter bestimmten Voraussetzungen. Wir beraten Sie gern dazu.</p></div>
+      </div>
+    </section>
+
+    <!-- Stimmen -->
+    <section class="section section--sand" id="stimmen">
+      <div class="container">
+        <div class="voices">
+          <div class="voices__head reveal">
+            <div class="eyebrow"><p>Patientenstimmen</p></div>
+            <div class="score">
+              <div class="score__num"><span>9,9</span><small>/10</small></div>
+              <div class="score__text"><p>Durchschnitt aus 12 Bewertungen auf sanego</p></div>
+            </div>
+            <div class="score">
+              <div class="score__num"><span>4,7</span><small>/5</small></div>
+              <div class="score__text"><p>Durchschnitt aus 36 Bewertungen auf Google</p></div>
+            </div>
+          </div>
+
+          <figure class="quote quote--lead reveal">
+            <blockquote><p>„Um meine Zahnprobleme zu lösen, war ich gern bereit, 80&nbsp;km zu fahren.“</p></blockquote>
+            <figcaption>Patientenbewertung auf sanego · Oktober 2021</figcaption>
+          </figure>
+        </div>
+
+        <div class="quotes reveal" tabindex="0" aria-label="Weitere Patientenstimmen">
+          <figure class="quote">
+            <blockquote><p>„Die Schwestern haben uns ganz herzlich begrüßt, das ist schon die halbe Miete, wenn man ein ängstliches Kind hat.“</p></blockquote>
+            <figcaption>sanego · September 2020</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>„Solch eine kompetente Beratung, Behandlung und Ausstattung haben wir anderweitig noch nicht gesehen.“</p></blockquote>
+            <figcaption>sanego · April 2019</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>„Ein mega tolles Team. Sehr empathisch, sehr charmant und sehr transparent.“</p></blockquote>
+            <figcaption>sanego · Mai 2018</figcaption>
+          </figure>
+          <figure class="quote">
+            <blockquote><p>„Er ist sehr kompetent, engagiert und freundlich. Ich kann ihn daher uneingeschränkt empfehlen.“</p></blockquote>
+            <figcaption>sanego · Dezember 2017</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sprechzeiten: the week drawn to scale, today marked -->
+    <section class="section" id="zeiten">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><p>Sprechzeiten</p></div>
+          <div class="heading"><h2>Früh ab acht, zweimal die Woche bis sieben.</h2></div>
+          <div class="lead"><p>Montags und donnerstags behandeln wir bis 19 Uhr, für alle, die tagsüber arbeiten. Termine bitte nach telefonischer Vereinbarung.</p></div>
+        </div>
+
+        <div class="week reveal" data-week>
+          <div class="week__axis" aria-hidden="true">
+            <span style="--h:8">8</span><span style="--h:10">10</span><span style="--h:12">12</span><span style="--h:14">14</span><span style="--h:16">16</span><span style="--h:18">18</span><span style="--h:19">19</span>
+          </div>
+          <div class="week__row" data-day="1">
+            <div class="week__day"><span>Montag</span></div>
+            <div class="week__track"><span class="week__bar" style="--a:8;--b:13"></span><span class="week__bar" style="--a:14.5;--b:19"></span></div>
+            <div class="week__txt"><span>8:00–13:00 · 14:30–19:00</span></div>
+          </div>
+          <div class="week__row" data-day="2">
+            <div class="week__day"><span>Dienstag</span></div>
+            <div class="week__track"><span class="week__bar" style="--a:8;--b:12"></span></div>
+            <div class="week__txt"><span>8:00–12:00</span></div>
+          </div>
+          <div class="week__row" data-day="3">
+            <div class="week__day"><span>Mittwoch</span></div>
+            <div class="week__track"><span class="week__bar" style="--a:8;--b:12"></span><span class="week__bar" style="--a:13;--b:16"></span></div>
+            <div class="week__txt"><span>8:00–12:00 · 13:00–16:00</span></div>
+          </div>
+          <div class="week__row" data-day="4">
+            <div class="week__day"><span>Donnerstag</span></div>
+            <div class="week__track"><span class="week__bar" style="--a:8;--b:12"></span><span class="week__bar" style="--a:14.5;--b:19"></span></div>
+            <div class="week__txt"><span>8:00–12:00 · 14:30–19:00</span></div>
+          </div>
+          <div class="week__row" data-day="5">
+            <div class="week__day"><span>Freitag</span></div>
+            <div class="week__track"><span class="week__bar" style="--a:8;--b:12"></span></div>
+            <div class="week__txt"><span>8:00–12:00</span></div>
+          </div>
+          <span class="week__now" aria-hidden="true"></span>
+        </div>
+
+        <div class="emergency reveal">
+          <div class="emergency__text"><p><strong>Zahnschmerzen außerhalb der Sprechzeiten?</strong> Der zahnärztliche Notdienst in Mecklenburg-Vorpommern ist nachts, am Wochenende und an Feiertagen für Sie da.</p></div>
+          <a class="btn btn--line" href="https://zaekmv.de/notfalldienstsuche" target="_blank" rel="noopener">Notdienst finden</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--sand" id="faq">
+      <div class="container">
+        <div class="faq">
+          <div class="section-head reveal">
+            <div class="eyebrow"><p>Häufige Fragen</p></div>
+            <div class="heading"><h2>Gut zu wissen.</h2></div>
+            <div class="lead"><p>Ihre Frage fehlt? Rufen Sie uns an: <a href="tel:+493955442961">0395 544 29 61</a>.</p></div>
+          </div>
+          <div class="acc-list reveal">
+            <div class="acc">
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn">
+                <span>Nehmen Sie neue Patienten auf?</span>
+                <span class="acc__icon"><svg aria-hidden="true"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="acc__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn">
+                <div class="acc__inner"><p>Ja. Rufen Sie uns während der Sprechzeiten an oder schicken Sie uns eine Terminanfrage über das Formular. Bringen Sie zum ersten Termin Ihre Versichertenkarte und, falls vorhanden, Ihr Bonusheft mit.</p></div>
+              </div>
+            </div>
+            <div class="acc">
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">
+                <span>Behandeln Sie gesetzlich und privat Versicherte?</span>
+                <span class="acc__icon"><svg aria-hidden="true"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="acc__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn">
+                <div class="acc__inner"><p>Ja, beide. Bevor eine Behandlung mit Eigenanteil beginnt, bekommen Sie einen Heil- und Kostenplan, damit Sie wissen, was auf Sie zukommt.</p></div>
+              </div>
+            </div>
+            <div class="acc">
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">
+                <span>Ich habe große Angst vor dem Zahnarzt. Was nun?</span>
+                <span class="acc__icon"><svg aria-hidden="true"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="acc__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn">
+                <div class="acc__inner"><p>Sagen Sie es uns gleich bei der Terminvereinbarung. Wir planen dann mehr Zeit ein, beginnen mit einem Gespräch ohne Behandlung und erklären jeden Schritt. Sie bestimmen das Tempo.</p></div>
+              </div>
+            </div>
+            <div class="acc">
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">
+                <span>Zahlt die Krankenkasse die Schnarchschiene?</span>
+                <span class="acc__icon"><svg aria-hidden="true"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="acc__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn">
+                <div class="acc__inner"><p>Bei einer ärztlich festgestellten obstruktiven Schlafapnoe übernehmen die gesetzlichen Kassen die Unterkieferprotrusionsschiene, wenn eine Überdrucktherapie (CPAP) nicht infrage kommt. Bei reinem Schnarchen ist die Schiene meist eine Privatleistung. Wir beraten Sie im Einzelfall.</p></div>
+              </div>
+            </div>
+            <div class="acc">
+              <button class="acc__btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">
+                <span>Was tun bei Zahnschmerzen am Wochenende?</span>
+                <span class="acc__icon"><svg aria-hidden="true"><use href="#i-plus"/></svg></span>
+              </button>
+              <div class="acc__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn">
+                <div class="acc__inner"><p>Außerhalb unserer Sprechzeiten hilft der zahnärztliche Notdienst. Den diensthabenden Zahnarzt in Ihrer Nähe finden Sie über die <a href="https://zaekmv.de/notfalldienstsuche" target="_blank" rel="noopener">Notdienstsuche der Zahnärztekammer M-V</a>.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontakt: on phones the form comes first -->
+    <section class="section" id="kontakt">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow"><p>Kontakt</p></div>
+          <div class="heading"><h2>Wir freuen uns auf Sie.</h2></div>
+        </div>
+
+        <div class="contact reveal">
+          <div class="contact__info">
+            <dl class="contact__details">
+              <div>
+                <dt>Anschrift</dt>
+                <dd><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Pfaffenstra%C3%9Fe+27+17033+Neubrandenburg" target="_blank" rel="noopener">Pfaffenstraße 27<br>17033 Neubrandenburg</a></dd>
+              </div>
+              <div>
+                <dt>Telefon</dt>
+                <dd><a class="contact__big" href="tel:+493955442961">0395 544 29 61</a></dd>
+              </div>
+              <div>
+                <dt>Fax</dt>
+                <dd>0395 566 19 85</dd>
+              </div>
+              <div>
+                <dt>E-Mail</dt>
+                <dd><a href="mailto:info@schuelein-zahnheilkunde.de">info@schuelein-zahnheilkunde.de</a></dd>
+              </div>
+              <div>
+                <dt>Sprechzeiten</dt>
+                <dd class="hours"><span>Mo</span><span>8–13 · 14:30–19 Uhr</span><span>Di</span><span>8–12 Uhr</span><span>Mi</span><span>8–12 · 13–16 Uhr</span><span>Do</span><span>8–12 · 14:30–19 Uhr</span><span>Fr</span><span>8–12 Uhr</span></dd>
+              </div>
+            </dl>
+            <a class="btn btn--cream" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pfaffenstra%C3%9Fe+27+17033+Neubrandenburg" target="_blank" rel="noopener">Route planen</a>
+          </div>
+
+          <div class="form-cell">
+            <div class="form-cell__title"><h3>Termin anfragen</h3></div>
+            <div class="form-cell__hint"><p>Wir rufen Sie zurück und stimmen den Termin mit Ihnen ab. Bitte schreiben Sie keine ausführlichen Gesundheitsdaten in das Formular.</p></div>
+            <form class="form" id="contact-form" novalidate>
+              <div class="form__row">
+                <div class="field">
+                  <label for="f-name">Ihr Name</label>
+                  <input id="f-name" name="name" type="text" autocomplete="name" required>
+                  <div class="field__error" id="f-name-err"></div>
+                </div>
+                <div class="field">
+                  <label for="f-tel">Telefon</label>
+                  <input id="f-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" required>
+                  <div class="field__error" id="f-tel-err"></div>
+                </div>
+              </div>
+              <div class="form__row">
+                <div class="field">
+                  <label for="f-mail">E-Mail <small>(optional)</small></label>
+                  <input id="f-mail" name="email" type="email" autocomplete="email" inputmode="email">
+                  <div class="field__error" id="f-mail-err"></div>
+                </div>
+                <div class="field">
+                  <label for="f-when">Wann passt es Ihnen?</label>
+                  <select id="f-when" name="wunschzeit">
+                    <option>Egal</option>
+                    <option>Vormittags</option>
+                    <option>Nachmittags</option>
+                    <option>Abends (Mo, Do)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="f-topic">Worum geht es?</label>
+                <select id="f-topic" name="anliegen">
+                  <option>Kontrolle / Vorsorge</option>
+                  <option>Professionelle Zahnreinigung</option>
+                  <option>Beschwerden / Schmerzen</option>
+                  <option>Zahnersatz</option>
+                  <option>Schnarchschiene</option>
+                  <option>Aligner-Beratung</option>
+                  <option>Ich bin neu in der Praxis</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-msg">Nachricht <small>(optional)</small></label>
+                <textarea id="f-msg" name="nachricht"></textarea>
+              </div>
+              <div class="field">
+                <div class="consent">
+                  <input id="f-consent" name="datenschutz" type="checkbox" required>
+                  <label for="f-consent">Ich bin einverstanden, dass meine Angaben zur Bearbeitung der Anfrage gespeichert werden. Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</label>
+                </div>
+                <div class="field__error" id="f-consent-err"></div>
+              </div>
+              <button class="btn btn--petrol" type="submit">Anfrage senden</button>
+              <div class="form__status" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{FOOTER}}
+</body>
+</html>

@@ -1,0 +1,5 @@
+.DS_Store
+.preview/
+.playwright-mcp/
+__pycache__/
+.vercel
